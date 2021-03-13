@@ -24,7 +24,7 @@ public class SUN {
      */
     public static void main(String[] args) {
          try {
-             auth = (AccountsInterface) Naming.lookup("rmi://localhost:9000/Accounts");
+             auth = (AccountsInterface) Naming.lookup("rmi://localhost:5984/Accounts");
              // TODO code application logic here  
          } catch (NotBoundException ex) {
              Logger.getLogger(SUN.class.getName()).log(Level.SEVERE, null, ex);

@@ -63,12 +63,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="closeButton" pref="90" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="passportField" pref="90" max="32767" attributes="0"/>
-                          <Component id="lastNameField" pref="90" max="32767" attributes="0"/>
-                          <Component id="firstNameField" max="32767" attributes="0"/>
-                          <Component id="registerButton" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="passportField" pref="90" max="32767" attributes="0"/>
+                      <Component id="lastNameField" pref="90" max="32767" attributes="0"/>
+                      <Component id="firstNameField" max="32767" attributes="0"/>
+                      <Component id="registerButton" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -140,7 +138,7 @@
             <Property name="text" type="java.lang.String" value="Register"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="registerButtonMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registerButtonActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="closeButton">
@@ -148,7 +146,7 @@
             <Property name="text" type="java.lang.String" value="Done"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="closeButtonMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="closeButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

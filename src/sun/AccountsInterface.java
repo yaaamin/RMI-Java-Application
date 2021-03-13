@@ -13,6 +13,7 @@ import java.rmi.RemoteException;
  */
 public interface AccountsInterface extends Remote{
     
-    public String login(String name, String passport) throws RemoteException;
-     public String add(User user) throws RemoteException;
+     public String addAdmin(Admin Admin) throws RemoteException;
+     public String addSalesperson(Salesperson Salesperson) throws RemoteException;
+     public String login(String name, String passport) throws RemoteException;
 }

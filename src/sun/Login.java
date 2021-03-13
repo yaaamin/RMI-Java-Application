@@ -63,16 +63,16 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setText("IC/Passport");
 
         loginButton.setText("Login");
-        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                loginButtonMouseClicked(evt);
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
             }
         });
 
         registerButton.setText("Register");
-        registerButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registerButtonMouseClicked(evt);
+        registerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerButtonActionPerformed(evt);
             }
         });
 
@@ -131,21 +131,21 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passportTextFieldActionPerformed
 
-    private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
-        try {
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+         try {
             // TODO add your handling code here:
             JOptionPane.showMessageDialog(null, SUN.auth.login(nameField.getText(), passportTextField.getText()));
         } catch (RemoteException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-    }//GEN-LAST:event_loginButtonMouseClicked
+    }//GEN-LAST:event_loginButtonActionPerformed
 
-    private void registerButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerButtonMouseClicked
+    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
         Register register = new Register();
         register.setVisible(true);
-    }//GEN-LAST:event_registerButtonMouseClicked
+    }//GEN-LAST:event_registerButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -16,15 +16,15 @@ import java.util.ArrayList;
  *
  * @author salma
  */
-public class User implements Serializable{
+public class Admin implements Serializable{
     
     private String firstName;
     private String lastName;
     private String passportNumber;
     
-    public User(){}
+    public Admin(){}
     
-    public User(String firstName, String lastName, String passportNumber){
+    public Admin(String firstName, String lastName, String passportNumber){
     this.firstName = firstName;
     this.lastName = lastName;
     this.passportNumber = passportNumber;
@@ -46,6 +46,10 @@ public class User implements Serializable{
     
     return this.passportNumber;
         
+    }
+    
+    public void modifyPassport(String newPassport){
+    this.passportNumber = newPassport;
     }
     
 }
