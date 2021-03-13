@@ -28,7 +28,7 @@ public class AccountsImplementation extends UnicastRemoteObject implements Accou
     }
     
     private ArrayList <Admin> AdminContainer = new ArrayList <Admin>(); 
-    private ArrayList <Salesperson> SalespersonContainer = new ArrayList <Salesperson>();
+    private ArrayList <SalesExecutive> SalesExecutiveContainer = new ArrayList <SalesExecutive>();
     
     private void readFromFileAdmin(){
     try{
@@ -40,7 +40,7 @@ public class AccountsImplementation extends UnicastRemoteObject implements Accou
      }
      
      catch(IOException | ClassNotFoundException e){
-         System.out.println("Error with text file or class!");
+         e.printStackTrace();
      }    
     }
     
@@ -55,36 +55,36 @@ public class AccountsImplementation extends UnicastRemoteObject implements Accou
      }
      
      catch(IOException e){
-         System.out.println("Error with text file!");
+         e.printStackTrace();
  }
     }
     
-    private void readFromFileSalesperson(){
+    private void readFromFileSalesExecutive(){
     try{
-         FileInputStream fileIn = new FileInputStream("Salesperson.txt");
+         FileInputStream fileIn = new FileInputStream("SalesExecutive.txt");
          ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-         SalespersonContainer = (ArrayList<Salesperson>) objectIn.readObject();
+         SalesExecutiveContainer = (ArrayList<SalesExecutive>) objectIn.readObject();
          objectIn.close();
          fileIn.close();
      }
      
      catch(IOException | ClassNotFoundException e){
-         System.out.println("Error with text file or class!");
+         e.printStackTrace();
      }    
     }
     
-    private void writeToFileSalesperson(){
+    private void writeToFileSalesExecutive(){
      
      try{
-         FileOutputStream fileOut = new FileOutputStream("Salesperson.txt");
+         FileOutputStream fileOut = new FileOutputStream("SalesExecutive.txt");
          ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-         objectOut.writeObject(SalespersonContainer);
+         objectOut.writeObject(SalesExecutiveContainer);
          fileOut.close();
          objectOut.close();
      }
      
      catch(IOException e){
-         System.out.println("Error with text file!");
+         e.printStackTrace();
  }
     }
     
@@ -112,7 +112,7 @@ public class AccountsImplementation extends UnicastRemoteObject implements Accou
     public String addAdmin(Admin Admin) throws RemoteException{
      readFromFileAdmin();
      
-     Admin.modifyPassport(securePassport(Admin.getPassportNumber(), "A321"));
+     String hash = securePassport(Admin.getPassportNumber(), "A321");
      
      boolean isFound = false;
      
@@ -121,7 +121,7 @@ public class AccountsImplementation extends UnicastRemoteObject implements Accou
      for(int i = 0; i < AdminContainer.size(); i++){
          
          adminList[i] = AdminContainer.get(i);
-         if(adminList[i].getFirstName().equals(Admin.getFirstName()) && (adminList[i].getLastName().equals(Admin.getLastName()) && (adminList[i].getPassportNumber().equals(Admin.getPassportNumber())))){
+         if(adminList[i].getFirstName().equals(Admin.getFirstName()) && (adminList[i].getLastName().equals(Admin.getLastName()) && (adminList[i].getPassportNumber().equals(hash)))){
              isFound = true;
              break;
             }
@@ -140,19 +140,19 @@ public class AccountsImplementation extends UnicastRemoteObject implements Accou
     }
     
     @Override
-    public String addSalesperson(Salesperson Salesperson) throws RemoteException {
-     readFromFileSalesperson();
+    public String addSalesExecutive(SalesExecutive SalesExecutive) throws RemoteException {
+     readFromFileSalesExecutive();
      
-     Salesperson.modifyPassport(securePassport(Salesperson.getPassportNumber(), "A321"));
+     String hash = securePassport(SalesExecutive.getPassportNumber(), "A321");
      
      boolean isFound = false;
      
-     Salesperson[] salespersonList = new Salesperson[SalespersonContainer.size()];
+     SalesExecutive[] SalesExecutiveList = new SalesExecutive[SalesExecutiveContainer.size()];
      
-     for(int i = 0; i < SalespersonContainer.size(); i++){
+     for(int i = 0; i < SalesExecutiveContainer.size(); i++){
          
-         salespersonList[i] = SalespersonContainer.get(i);
-         if(salespersonList[i].getFirstName().equals(Salesperson.getFirstName()) && (salespersonList[i].getLastName().equals(Salesperson.getLastName()) && (salespersonList[i].getPassportNumber().equals(Salesperson.getPassportNumber())))){
+         SalesExecutiveList[i] = SalesExecutiveContainer.get(i);
+         if(SalesExecutiveList[i].getFirstName().equals(SalesExecutive.getFirstName()) && (SalesExecutiveList[i].getLastName().equals(SalesExecutive.getLastName()) && (SalesExecutiveList[i].getPassportNumber().equals(hash)))){
              isFound = true;
              break;
             }
@@ -163,9 +163,9 @@ public class AccountsImplementation extends UnicastRemoteObject implements Accou
          return "Failure to add new user, probably already exists! Try logging in with username and passport numeber!";
      }
      
-     Salesperson.modifyPassport(securePassport(Salesperson.getPassportNumber(), "A321"));
-     SalespersonContainer.add(Salesperson);
-     writeToFileSalesperson();
+     SalesExecutive.modifyPassport(securePassport(SalesExecutive.getPassportNumber(), "A321"));
+     SalesExecutiveContainer.add(SalesExecutive);
+     writeToFileSalesExecutive();
      
      return "Successfully added!";  
     }
@@ -178,7 +178,7 @@ public class AccountsImplementation extends UnicastRemoteObject implements Accou
     
      int i;
      boolean isFoundAdmin = false;
-     boolean isFoundSalesperson = false;
+     boolean isFoundSalesExecutive = false;
      
      passport = securePassport(passport, "A321");
      
@@ -195,26 +195,26 @@ public class AccountsImplementation extends UnicastRemoteObject implements Accou
      }
      
         if(isFoundAdmin == true){
-        return "Logged in successfully as admin!" + i;
+        return "Logged in successfully as admin!";
         }
         
-        readFromFileSalesperson();
+        readFromFileSalesExecutive();
         
-        Salesperson[] salespersonList = new Salesperson[SalespersonContainer.size()];
+        SalesExecutive[] SalesExecutiveList = new SalesExecutive[SalesExecutiveContainer.size()];
         
-        for (i = 0; i < SalespersonContainer.size(); i++) {
-            salespersonList[i] = SalespersonContainer.get(i);
+        for (i = 0; i < SalesExecutiveContainer.size(); i++) {
+            SalesExecutiveList[i] = SalesExecutiveContainer.get(i);
         
         
-        if(salespersonList[i].getFirstName().equals(firstandlastNames[0]) && (salespersonList[i].getLastName().equals(firstandlastNames[1]) && (salespersonList[i].getPassportNumber().equals(passport)))){
+        if(SalesExecutiveList[i].getFirstName().equals(firstandlastNames[0]) && (SalesExecutiveList[i].getLastName().equals(firstandlastNames[1]) && (SalesExecutiveList[i].getPassportNumber().equals(passport)))){
         
-            isFoundSalesperson = true;
+            isFoundSalesExecutive = true;
             break;
         }
+            }
         
-        if(isFoundSalesperson == true){
-        return "Logged in successfully as salesperson!";
-        }
+        if(isFoundSalesExecutive == true){
+        return "Logged in successfully as Sales Executive!";
         }
         
         return "No account found with given username and passport number!";

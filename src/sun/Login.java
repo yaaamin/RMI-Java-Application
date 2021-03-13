@@ -133,12 +133,34 @@ public class Login extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
+        
+        String output = null;
+        
          try {
             // TODO add your handling code here:
-            JOptionPane.showMessageDialog(null, SUN.auth.login(nameField.getText(), passportTextField.getText()));
+            output = SUN.auth.login(nameField.getText(), passportTextField.getText());
         } catch (RemoteException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
+         
+         if("Logged in successfully as admin!".equals(output)){
+         
+             AdminPanel AP = new AdminPanel();
+             AP.setVisible(true);
+             this.dispose();
+             
+         }
+         
+         else if("Logged in successfully as Sales Executive!".equals(output)){
+         System.out.println("WORK IN PROGRESS");
+         }
+         
+         else {
+         
+             JOptionPane.showMessageDialog(null, output);
+             
+         }
+         
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed

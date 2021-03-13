@@ -5,19 +5,21 @@
  */
 package sun;
 
+import java.io.Serializable;
+
 /**
  *
  * @author salma
  */
-public class Salesperson {
+public class SalesExecutive implements Serializable{
     
     private String firstName;
     private String lastName;
     private String passportNumber;
     
-    public Salesperson(){}
+    public SalesExecutive(){}
     
-    public Salesperson(String firstName, String lastName, String passportNumber){
+    public SalesExecutive(String firstName, String lastName, String passportNumber){
 
     this.firstName = firstName;
     this.lastName = lastName;

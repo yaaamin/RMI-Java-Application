@@ -19,12 +19,14 @@ import java.util.logging.Logger;
 public class SUN {
 
      public static AccountsInterface auth;
+     public static AdminInterface admin;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
          try {
              auth = (AccountsInterface) Naming.lookup("rmi://localhost:5984/Accounts");
+             admin = (AdminInterface) Naming.lookup("rmi://localhost:5984/Admin");
              // TODO code application logic here  
          } catch (NotBoundException ex) {
              Logger.getLogger(SUN.class.getName()).log(Level.SEVERE, null, ex);
