@@ -20,13 +20,19 @@ public class SUN {
 
      public static AccountsInterface auth;
      public static AdminInterface admin;
+     public static SalesExecutiveInterface salesexecutive;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Server server = new Server();
+        server.main(new String[0]);
+        
          try {
              auth = (AccountsInterface) Naming.lookup("rmi://localhost:5984/Accounts");
              admin = (AdminInterface) Naming.lookup("rmi://localhost:5984/Admin");
+             salesexecutive = (SalesExecutiveInterface) Naming.lookup("rmi://localhost:5984/SalesExecutive");
              // TODO code application logic here  
          } catch (NotBoundException ex) {
              Logger.getLogger(SUN.class.getName()).log(Level.SEVERE, null, ex);

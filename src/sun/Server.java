@@ -17,11 +17,14 @@ import java.util.logging.Logger;
  */
 public class Server {
     
+    public static int port = 5984;
+    
     public static void main(String[] args) {
         try {
-            Registry registry = LocateRegistry.createRegistry(5984);
+            Registry registry = LocateRegistry.createRegistry(port);
             registry.rebind("Accounts", new AccountsImplementation());
             registry.rebind("Admin", new AdminImplementation());
+            registry.rebind("SalesExecutive", new SalesExecutiveImplementation());
         } catch (RemoteException ex) {
             System.out.println("Remote exception error, try changing ports!");
             ex.printStackTrace();

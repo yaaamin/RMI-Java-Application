@@ -23,7 +23,6 @@ public class Login extends javax.swing.JFrame {
      * Creates new form Login
      */
     public Login() {
-        setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -152,7 +151,9 @@ public class Login extends javax.swing.JFrame {
          }
          
          else if("Logged in successfully as Sales Executive!".equals(output)){
-         System.out.println("WORK IN PROGRESS");
+         SalesExecutivePanel SEP = new SalesExecutivePanel();
+         SEP.setVisible(true);
+         this.dispose();
          }
          
          else {

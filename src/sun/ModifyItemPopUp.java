@@ -138,9 +138,9 @@ public class ModifyItemPopUp extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         Item newItem = new Item(Integer.parseInt(jTextField1.getText()), jTextField2.getText(), Double.parseDouble(jTextField3.getText()), Integer.parseInt(jTextField4.getText()));
+         Item newItem = new Item(jTextField2.getText(), Double.parseDouble(jTextField3.getText()), Integer.parseInt(jTextField4.getText()));
         try {
-             JOptionPane.showMessageDialog(null, SUN.admin.modifyItem(newItem, newItem.id));
+             JOptionPane.showMessageDialog(null, SUN.admin.modifyItem(newItem, Integer.parseInt(jTextField1.getText())));
         } catch (RemoteException ex) {
             Logger.getLogger(AddItemPopUp.class.getName()).log(Level.SEVERE, null, ex);
         }
