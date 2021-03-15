@@ -51,12 +51,12 @@ public class AdminImplementation extends UnicastRemoteObject implements AdminInt
         }
     }
 
-    public String addItem(Item item) throws RemoteException {
+    public Integer addItem(Item item) throws RemoteException {
         readFromFile();
         item.id = Container.size();
         Container.add(item);
         writeToFile();
-        return "Successfully added!";
+        return item.id;
     }
 
     public String modifyItem(Item item, int id) throws RemoteException {
