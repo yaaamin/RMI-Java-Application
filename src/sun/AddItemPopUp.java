@@ -133,7 +133,7 @@ public class AddItemPopUp extends javax.swing.JFrame {
         // TODO add your handling code here:
         Item newItem = new Item(jTextField2.getText(), Double.parseDouble(jTextField3.getText()), Integer.parseInt(jTextField4.getText()));
         try {
-             JOptionPane.showMessageDialog(null, SUN.admin.addItem(newItem));
+             SUN.admin.addItem(newItem);
         } catch (RemoteException ex) {
             Logger.getLogger(AddItemPopUp.class.getName()).log(Level.SEVERE, null, ex);
         }
