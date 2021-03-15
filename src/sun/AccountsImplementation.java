@@ -129,7 +129,7 @@ public class AccountsImplementation extends UnicastRemoteObject implements Accou
      
      if(isFound == true){
      
-         return "Failure to add new user, probably already exists! Try logging in with username and passport numeber!";
+         return "Failure to add new user, probably already exists! Try logging in with username and passport number!";
      }
      
      Admin.modifyPassport(securePassport(Admin.getPassportNumber(), "A321"));
@@ -160,7 +160,7 @@ public class AccountsImplementation extends UnicastRemoteObject implements Accou
      
      if(isFound == true){
      
-         return "Failure to add new user, probably already exists! Try logging in with username and passport numeber!";
+         return "Failure to add new user, probably already exists! Try logging in with username and passport number!";
      }
      
      SalesExecutive.modifyPassport(securePassport(SalesExecutive.getPassportNumber(), "A321"));

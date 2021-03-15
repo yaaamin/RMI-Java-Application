@@ -181,6 +181,6 @@ public class SalesExecutiveImplementation extends UnicastRemoteObject implements
     
         }
         
-        return "Sucess!";
+        return "Success!";
     }
 }
