@@ -60,29 +60,6 @@ public class SalesExecutiveImplementation extends UnicastRemoteObject implements
         }
     }
 
-    public void makeOrder(ArrayList<Integer> itemIds) throws RemoteException {
-        readFromFile();
-        Item[] itemList = new Item[Container.size()];
-        double total = 0;
-
-        for (int i = 0; i < itemIds.size(); i++) {
-            for (int j = 0; j < Container.size(); j++) {
-                itemList[j] = Container.get(j);
-                if (itemList[i].id == itemIds.get(i)) {
-                    itemList[i].stock--;
-                    total += itemList[i].price;
-                    break;
-                }
-            }
-        }
-        writeToFile();
-        
-        Receipt receipt = new Receipt(itemIds, total);
-        readReceiptFromFile();
-        receipts.add(receipt);
-        writeReceiptToFile();
-    }
-
     public void writeReceiptToFile() {
         try {
             FileOutputStream fileOut = new FileOutputStream("receipts.txt");
