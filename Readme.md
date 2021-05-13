@@ -1,1 +1,1 @@
-# Remote Java Application for Sun Groceris
+# Remote Java Application for Sun Groceries Sdn. Bhd.
